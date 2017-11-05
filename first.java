@@ -26,6 +26,22 @@ public class first {
         String str = null; 
         str = get_string(str);
         
+        //parser
+        String spaces = "[ ]+";
+        String[] items = str.split(spaces);
+        int len = items.length;             //length of 'array'
+        
+        //check for only integers
+        for (int i=0; i < len; i++)
+            try {
+                int check = 0;
+                check+=Integer.parseInt(items[i]);
+            }
+        catch (Throwable t){
+            System.out.println("Please input only numubers");
+            System.exit(0);
+        }
+        
         System.out.println("What do you want to do? ");
         String action = null; 
         action = get_string(action);
@@ -33,20 +49,22 @@ public class first {
         System.out.println(action);
         
         
-        //parser
-        String spaces = "[ ]+";
-        String[] items = str.split(spaces);
         
         //for (int i=0; i < items.length; i++)    //printing input numbers
         //    System.out.println(items[i]);
         
         int x = 0;
-        int len = items.length;
         switch (action) {
             case "sum": case "add to": case "сумма": case "+": case "сложить": case "прибавить":   //sum input numbers
     
                 for (int i=0; i < len; i++)   
                 x+= Integer.parseInt(items[i]); break;
+                
+            case "substract": case "deduct": case "вычитание": case "-": case "вычесть": case "разность":   //substract input numbers
+    
+                for (int i=0; i < len; i++)   
+                x-= Integer.parseInt(items[i]); break;
+                
             default:
             System.out.println("I don't know this method");
         

@@ -56,14 +56,29 @@ public class first {
         int x = 0;
         switch (action) {
             case "sum": case "add to": case "сумма": case "+": case "сложить": case "прибавить":   //sum input numbers
-    
                 for (int i=0; i < len; i++)   
                 x+= Integer.parseInt(items[i]); break;
                 
+                
             case "substract": case "deduct": case "вычитание": case "-": case "вычесть": case "разность":   //substract input numbers
-    
                 for (int i=0; i < len; i++)   
                 x-= Integer.parseInt(items[i]); break;
+                
+            case "multiply": case "*": case "x": case "умножить": case "перемножить":   //multiply input numbers
+                x= Integer.parseInt(items[0]);
+                for (int i=1; i < len; i++)  
+                x*= Integer.parseInt(items[i]); break;
+                
+                
+            case "divide": case "division": case "/": case "разделить": case "поделить": case "деление":   //division input numbers
+                if (len>2) {
+                    System.out.println("You can only divide 2 numbers");
+                }
+                else {
+                    x = Integer.parseInt(items[0]) / Integer.parseInt(items[1]);
+                }
+                
+                
                 
             default:
             System.out.println("I don't know this method");

@@ -5,28 +5,36 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class first { 
+public class first_copy { 
+    public static String get_string(String str){
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   //creates new input reader "br"
+                         
+
+            try {
+                str = br.readLine();        //writes string to numbers variable
+            }
+            catch (IOException e) {
+                e.printStackTrace();            //took from internet, don't know what it prints
+            }
+            System.out.println("you've entered: " +str);
+            return str;
+    }
 	public static void main(String[] args) {
         
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   //creates new input reader "br"
+        
         
 		System.out.println("please input numubers: ");
-        String numbers = null;              
+        String str = null; 
+        str = get_string(str);
         
-        try {
-            numbers = br.readLine();        //writes string to numbers variable
-        }
-        catch (IOException e) {
-            e.printStackTrace();            //took from internet, don't know what it prints
-        }
-        System.out.println("you've entered: " +numbers);
+		System.out.println(str);
         
-        //loop function add number
-        public class summarize {
-            public static void summ(int... args) {       //reads numbers and adds up them
-                System.out.println("functional " +numbers);
-            }
-            //first.summ(numbers);
+        //parser
+        String spaces = "[ ]+";
+        String[] items = str.split(spaces);
+        for (int i=0; i < items.length; i++)    //printing input numbers
+            System.out.println(items[i]);
+        
+
         }
 	}
-}

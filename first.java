@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class first_copy { 
+public class first { 
     public static String get_string(String str){
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   //creates new input reader "br"
                          
@@ -16,7 +16,6 @@ public class first_copy {
             catch (IOException e) {
                 e.printStackTrace();            //took from internet, don't know what it prints
             }
-            System.out.println("you've entered: " +str);
             return str;
     }
 	public static void main(String[] args) {
@@ -27,7 +26,12 @@ public class first_copy {
         String str = null; 
         str = get_string(str);
         
-		System.out.println(str);
+        System.out.println("What do you want to do? ");
+        String action = null; 
+        action = get_string(action);
+        
+        System.out.println(action);
+        
         
         //parser
         String spaces = "[ ]+";

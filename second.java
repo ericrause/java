@@ -5,10 +5,20 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class first { 
+public class second { 
 	public static void main(String[] args) {
-        system.out.println("first is " +args[0]);
-        system.out.println("second is " +args[1]);
+        System.out.println("first is " +args[0]);
+        System.out.println("second is " +args[1]);
+        try {
+            int a1 = Integer.parseInt(args[0]);
+            int a2 = Integer.parseInt(args[1]);
+            int summ = a1 + a2;
+            System.out.println("sum is " +summ);
+            
+        }
+        catch (Throwable t) {   
+            System.out.println("Please enter correct numbers");
+        }
         
     }
 }

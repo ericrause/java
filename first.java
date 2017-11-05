@@ -36,9 +36,17 @@ public class first {
         //parser
         String spaces = "[ ]+";
         String[] items = str.split(spaces);
-        for (int i=0; i < items.length; i++)    //printing input numbers
-            System.out.println(items[i]);
+        //for (int i=0; i < items.length; i++)    //printing input numbers
+        //    System.out.println(items[i]);
         
-
+        int x = 0;
+        switch (action) {
+            case "sum":                         //sum input numbers
+                for (int i=0; i < items.length; i++)   
+                x+= Integer.parseInt(items[i]); break;
+            
+        
         }
-	}
+        System.out.println(x);
+    }
+}

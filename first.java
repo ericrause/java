@@ -36,15 +36,19 @@ public class first {
         //parser
         String spaces = "[ ]+";
         String[] items = str.split(spaces);
+        
         //for (int i=0; i < items.length; i++)    //printing input numbers
         //    System.out.println(items[i]);
         
         int x = 0;
+        int len = items.length;
         switch (action) {
-            case "sum":                         //sum input numbers
-                for (int i=0; i < items.length; i++)   
+            case "sum": case "add to": case "сумма": case "+": case "сложить": case "прибавить":   //sum input numbers
+    
+                for (int i=0; i < len; i++)   
                 x+= Integer.parseInt(items[i]); break;
-            
+            default:
+            System.out.println("I don't know this method");
         
         }
         System.out.println(x);

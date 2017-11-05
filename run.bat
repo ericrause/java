@@ -6,8 +6,6 @@ if %execute%=="y" goto execute_it
 goto finish
 
 :execute_it
-"c:\Program Files\Java\jdk-9.0.1\bin\java" %file%
-rem can't execute file
+call r_.bat %file%
 
 :finish
-set /p wait=""

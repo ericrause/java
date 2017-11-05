@@ -6,7 +6,8 @@ if "%execute%"=="y" goto execute_it
 goto finish
 
 :execute_it
-"c:\Program Files\Java\jdk-9.0.1\bin\java" %file%
+set /p parameters="enter parameters: "
+"c:\Program Files\Java\jdk-9.0.1\bin\java" %file% %parameters%
 set /p wait=""
 
 :finish

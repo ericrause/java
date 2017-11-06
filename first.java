@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class first { 
-    public static String get_string(String str){
+public class first { //FirstTestClass
+    public static String get_string(String str){   //getString
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   //creates new input reader "br"
                          
 

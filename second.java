@@ -1,6 +1,6 @@
-//------------------
-// its a FIRST task
-//------------------
+/**------------------
+* its a FIRST task
+*/------------------
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,7 +17,7 @@ public class second {
             System.out.println("sum is " +summ);
             
         }
-        catch (Throwable t) {   
+        catch (Throwable t) {   //replace to exception
             System.out.println("Please enter correct numbers");
         }
         

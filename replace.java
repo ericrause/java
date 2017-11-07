@@ -33,12 +33,11 @@ public class replace {
         str2 = get_string(str2);
 
         //parser
-        String by_symbols = "[]+";
-        String[] str1_items = str1.split(by_symbols);
-        String[] str2_items = str2.split(by_symbols);
+        String[] str1_items = str1.split("");
+        String[] str2_items = str2.split("");
         
-        for (int i : str1_items){
-		  System.out.println(str1_items);
+        for (int i=0; i < str1_items.length; i++){
+		  System.out.println(str1_items[i]);
             
         }
         

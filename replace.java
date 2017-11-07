@@ -22,7 +22,9 @@ public class replace {
         
         
         String str1 = null; 
+        String str1_out = null; 
         String str2 = null; 
+        String str2_out = null; 
         String symbol = null; 
         
         
@@ -31,6 +33,32 @@ public class replace {
                                                                 //need to add check for everything
 		System.out.println("Please enter second string");         //need to add check for everything
         str2 = get_string(str2);
+        
+        String[][] replacements = {     //vocabulary
+            {"c", "с"},                 //eng to rus
+            {"C", "С"},
+            {"e", "е"},
+            {"E", "Е"},
+            {"o", "о"},
+            {"O", "О"},
+            {"p", "Р"},
+            {"P", "Р"},
+            {"a", "а"},
+            {"A", "А"},
+            {"x", "х"},
+            {"X", "Х"},
+            {"T", "Т"},
+            {"y", "у"},
+            {"H", "Н"},
+            {"B", "В"};
+          //{"b", "ь"}
+            
+        }
+        
+        for (String[] r: replacements){
+            str1_out = str1(r[0], r[1]);
+        }
+        System.out.println(str1_out);
 
         //parser
         String[] str1_items = str1.split("");

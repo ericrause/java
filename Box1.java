@@ -41,32 +41,39 @@ class Rectangle {
             str = get_string(str);
             String spaces = "[ ]+";
             String[] items = str.split(spaces);
-            double[] scalars;
+            double[] scalars = new double[2];
             int len = items.length; 
 
-            for (int i=0; i < len; i++)
-            try {
-                scalars[i]=Double.parseDouble(items[i]);
-            }
-            catch (Throwable t){
-                System.out.println("Please input only numubers");
-                System.exit(0);
-            }
-        
+            for (int i=0; i < len+1; i++)
+                //try {
+                    scalars[i]=Double.parseDouble(items[i]);
+                //}
+                //catch (Exception e){
+                //    System.out.println("Please input only numubers");
+                //    System.exit(0);
+                //}
+            width=scalars[0];
+            System.out.println("scalars 0 = " +scalars[0]);
+            height=scalars[1];
+            System.out.println("scalars 1 = " +scalars[1]);
     }
-    void setDims(double w, double h){
-        width=w;
-        height=h;
-    
-    }
+    //void setDims(double w, double h){}
 }
 
 class Box1 {
     public static void main(String args[]){
+
+        double width;
+        double height;
+        
+        double a=0;
+        double b=0;
+        
         Rectangle mybox = new Rectangle();
         double boxSpace;
         
-        mybox.setDims(5,5);
+        mybox.getDims(a,b);
+        //mybox.setDims(scalars[0], scalars[1]);
             
         boxSpace=mybox.space();
         System.out.println("Space is " +boxSpace);

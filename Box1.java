@@ -13,6 +13,8 @@ public class Item implements ToCount {
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.Double;
+import java.text.NumberFormat;
 
 
 class Rectangle {
@@ -42,11 +44,14 @@ class Rectangle {
             String spaces = "[ ]+";
             String[] items = str.split(spaces);
             double[] scalars = new double[2];
-            int len = items.length; 
+            int len = items.length;
+        
+            NumberFormat formatter = NumberFormat.getInstance();
 
-            for (int i=0; i < len+1; i++)
+            for (int i=0; i < len+1; i++) {
                 //try {
-                    scalars[i]=Double.parseDouble(items[i]);
+                   // scalars[i]=Double.parseDouble(items[i]);
+                    scalars[i]=formatter.parse(items[i]).doubleValue(); }
                 //}
                 //catch (Exception e){
                 //    System.out.println("Please input only numubers");

@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Objects;
 
 public class Check {
+   // public String path = "C:\\test\\data.txt";
 
     public static boolean findFile(){
         try(FileReader reader = new FileReader("C:\\test\\data.txt")) {

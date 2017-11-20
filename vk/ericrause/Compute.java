@@ -1,6 +1,20 @@
 package vk.ericrause;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.SimpleTimeZone;
+
 public class Compute {
+
+    public static String date(){
+        Date d = new Date();
+        SimpleDateFormat formatMy = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+        String dateMy = formatMy.format(d);
+        return dateMy;
+    }
+
     public static String toCompute(String str) {
         //parse term by *+-/ to doubles
         //
@@ -25,6 +39,23 @@ public class Compute {
         String result = "";
         result = Double.toString(test3) ;
 
+
+
+
+                     //for registration
+        try(FileWriter writer = new FileWriter("C:\\test\\log.txt",true)){
+            String stringToWrite = str + " = " + result + " at " + date();
+            writer.append(stringToWrite);
+            writer.append('\n');
+            writer.flush();
+        }
+        catch (IOException ex){
+            System.out.println(ex.getMessage());
+        }
+
+
         return result;
     }
+
+
 }

@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
+import static vk.ericrause.Check.findFile;
+
 
 public class FckngGUI extends JFrame {
 
@@ -128,10 +130,19 @@ private void initButtons(){
                 e1.printStackTrace();
             }
         });
+
+
+
         panelSouth.add(register, BorderLayout.EAST);
+
+        if(!findFile()) {register.setEnabled(true);} else { register.setEnabled(false);}
+
         register.addActionListener(e -> {
             try {
                 Check.addToFile(login.getText(), password.getText());
+                login.setText("");
+                password.setText("");
+                FckngGUI.infoBox("Successfully registered", "OK");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

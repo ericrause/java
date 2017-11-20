@@ -48,11 +48,9 @@ public class Check {
                 String[] pairArr = pair.split("[ :]+");
                 existingLogin = pairArr[0];
                 existingPass = pairArr[1];
-
             }
 
-            //place here reader and comp
-            //if readed login=login and pass=pass then return true. else false.
+
 
             if (readedLogin.equals(existingLogin) & readedPass.equals(existingPass)) return true;
             else return false;

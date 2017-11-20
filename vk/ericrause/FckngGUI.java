@@ -100,7 +100,6 @@ private void initButtons(){
         enter = new JButton("Sign In");
 
 
-
         JPanel panelNorth = new JPanel(new BorderLayout());
         authForm.add(panelNorth, BorderLayout.NORTH);
 
@@ -131,8 +130,6 @@ private void initButtons(){
             }
         });
 
-
-
         panelSouth.add(register, BorderLayout.EAST);
 
         if(!findFile()) {register.setEnabled(true);} else { register.setEnabled(false);}
@@ -149,8 +146,6 @@ private void initButtons(){
         });
     }
 
-
-
     public void createView(){
         JPanel panel = new JPanel();
         panel.setBorder(new EmptyBorder(3,3,3,3));
@@ -163,7 +158,6 @@ private void initButtons(){
 
         input = new JTextField();
         panelNorth.add(input, BorderLayout.CENTER);
-
 
         JPanel panelCenter = new JPanel(new GridLayout(4,4));
         panel.add(panelCenter, BorderLayout.CENTER);
@@ -187,17 +181,6 @@ private void initButtons(){
         panelCenter.add(bDot);
         panelCenter.add(bEq);
 
-        /** textarea in the middle
-        textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        panel.add(scrollPane);
-         */
-
-
-
         JPanel panelSouth = new JPanel();
         panel.add(panelSouth, BorderLayout.SOUTH);
 
@@ -209,7 +192,6 @@ private void initButtons(){
             }
         });
         panelSouth.add(clear);
-
     }
 
 public static void main(String[] args){
@@ -220,24 +202,4 @@ public static void main(String[] args){
             }
         });
 }
-
-
-
-
-
-
-
-
-    /**
-    class ButtonEventListener implements ActionListener {
-        public void actionPerformed (ActionEvent e){
-            String message = "";
-            message += "button pressed\n Text is " +input.getText();
-            JOptionPane.showMessageDialog(null, message, "Output", JOptionPane.PLAIN_MESSAGE);
-
-
-
-        }
-    }
-     */
 }

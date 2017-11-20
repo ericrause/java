@@ -36,25 +36,26 @@ public class Check {
     public static boolean  check(String login, String pass) throws IOException {
         String readedLogin = login;
         String readedPass = pass;
+        if (findFile()) {
 
+            String existingLogin;
+            String existingPass;
+            try (BufferedReader reader = new BufferedReader(new FileReader("C:\\test\\data.txt"))) {
 
-        try(BufferedReader reader = new BufferedReader(new FileReader("C:\\test\\data.txt")) {
+                String pair = reader.readLine();
 
-            String pair = reader.readLine();
-            String[] pairArr = pair.split("[ :]+");
-            String existingLogin = pairArr[0];
-            String existingPass = pairArr[1];
-
-
+                String[] pairArr = pair.split("[ :]+");
+                existingLogin = pairArr[0];
+                existingPass = pairArr[1];
 
             }
-            return existingLogin;
 
+            //place here reader and comp
+            //if readed login=login and pass=pass then return true. else false.
 
-
+            if (readedLogin.equals(existingLogin) & readedPass.equals(existingPass)) return true;
+            else return false;
         }
-
-        //place here reader and comp
-        //if readed login=login and pass=pass then return true. else false.
+        return false;
     }
 }

@@ -2,9 +2,7 @@ package vk.ericrause;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.SimpleTimeZone;
-import  java.util.UUID;
+import java.util.*;
 
 public class Compute {
 
@@ -21,6 +19,7 @@ public class Compute {
         if (file.exists()) {
             String uniqueID = UUID.randomUUID().toString();
             //file.renameTo(new java.io.File("C:\\test\\log" + uniqueID + ".txt"));
+
             file.renameTo(new File("C:\\test\\log" + uniqueID + ".txt"));
 
         }
@@ -31,10 +30,16 @@ public class Compute {
 
 
     public static String toCompute(String str) {
-        //parse term by *+-/ to doubles
-        //
-        String operations = "[ +-/*]+";
 
+        try {
+            return  Mapping.searchInMap(str);
+
+        } catch (Throwable t) {                             // WHAT EXCEPTION SHOULD BE HERE????
+            System.out.println("Couldn't get key from Map");
+        }
+
+
+        String operations = "[ +-/*]+";     //use REGEX instead
         String[] parsedStr = str.split(operations);
 
 
@@ -43,7 +48,7 @@ public class Compute {
         test1 = Double.parseDouble(parsedStr[0]);
         test2 = Double.parseDouble(parsedStr[1]);
         test3 = test1 + test2;
-/**
+/*
         double items[]=null;
         int len = parsedStr.length;
         //for (int i=0; i < len; i++){
@@ -52,7 +57,7 @@ public class Compute {
        // }
  */
         String result = "";
-        result = Double.toString(test3) ;
+        result = Double.toString(test3);
 
 
         int lineNumber = 0;
@@ -68,14 +73,9 @@ public class Compute {
             }
 
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
         try(FileWriter writer = new FileWriter("C:\\test\\log.txt",true)){
             String stringToWrite = str + " = " + result + " at " + date();
@@ -87,8 +87,9 @@ public class Compute {
             System.out.println(ex.getMessage());
         }
 
-
-        return result;
+//        ADDING TO HASHMAP AFTER COMPUTONG
+        Mapping.addToHashMap(str, Integer.parseInt(result));
+        return result;      //this result goes to input.setText()
     }
 
 

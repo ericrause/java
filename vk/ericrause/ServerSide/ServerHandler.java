@@ -29,7 +29,8 @@ public class ServerHandler extends JFrame implements Runnable{
                 output = new ObjectOutputStream(connection.getOutputStream());
                 input = new ObjectInputStream(connection.getInputStream());
                 result = FileRotator.toProcess((String) input.readObject());
-                output.writeObject("You've send: " + input.readObject() +"\n" + "result is: " );
+
+                output.writeObject(result);
 
                 try{
                     Thread.sleep(10);

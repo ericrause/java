@@ -5,10 +5,17 @@ import vk.ericrause.ClientSide.Mapping;
 import vk.ericrause.ServerSide.RegEXed;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class FileRotator {
+
+    private static String uniqueID = UUID.randomUUID().toString();
+    private static Path source = Paths.get("C:\\test\\log.txt");
+    private static Path sourceRandom = Paths.get("C:\\test\\log "+ uniqueID +".txt");
 
     public static String date(){
         Date d = new Date();
@@ -18,41 +25,21 @@ public class FileRotator {
         return dateMy;
     }
 
-    public static void rename() {
-        java.io.File file = new java.io.File("C:\\test\\log.txt");
-        if (file.exists()) {
-            String uniqueID = UUID.randomUUID().toString();
-            //file.renameTo(new java.io.File("C:\\test\\log" + uniqueID + ".txt"));
+    public static void rename(Path source) throws IOException {
+        Files.copy(source,sourceRandom);                        //copy to new file with unique id
+        PrintWriter pw = new PrintWriter(String.valueOf(source));//erasing an existing file's content
+        pw.print("");
+        pw.close();
 
-            file.renameTo(new File("C:\\test\\log" + uniqueID + ".txt"));
-
-        }
-        else {
-            FckngGUI.infoBox("error when renaming file","error");
-        }
     }
 
 
     public static String toProcess(String str) {
 
-                if ((Mapping.mapCounted != null) && Mapping.searchInMap(str) != "nope") {
+                if ((Mapping.mapCounted != null) && !Objects.equals(Mapping.searchInMap(str), "nope")) {
                         return Mapping.searchInMap(str);
                 }
 
-//        String operations = "[ +-/*]+";     //use REGEX instead
-//        String[] parsedStr = str.split(operations);
-//        double test1, test2, test3;
-//        test1 = Double.parseDouble(parsedStr[0]);
-//        test2 = Double.parseDouble(parsedStr[1]);
-//        test3 = test1 + test2;
-/*
-        double items[]=null;
-        int len = parsedStr.length;
-        //for (int i=0; i < len; i++){
-            items[0] = Double.parseDouble(parsedStr[0].toString());
-            items[1] = Double.parseDouble(parsedStr[1].toString());
-       // }
- */
         double result;
         result = RegEXed.toRegEx(str);
 
@@ -64,9 +51,9 @@ public class FileRotator {
                 lineNumber+=1;
             }
 
-            if (lineNumber == 10){
-                FckngGUI.infoBox("line="+lineNumber,"title");
-                rename();
+            if (lineNumber >= 10){
+                FckngGUI.infoBox("Just created a new log file","title");
+                rename(source);
             }
 
 

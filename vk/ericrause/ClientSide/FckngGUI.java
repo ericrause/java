@@ -17,7 +17,7 @@ import static vk.ericrause.ServerSide.Check.findFile;
 public class FckngGUI extends JFrame {
 
     private JButton register, enter, clear, bPlus, bMinus, bDiv, bMul, bDot, bEq, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
-    private static JTextField input;
+    static JTextField inputField;
     private JTextField login;
     private JTextField password;
     private JTextArea textArea;
@@ -58,7 +58,7 @@ public class FckngGUI extends JFrame {
 //    private static NewActionListener nal = new NewActionListener() {
 //        @Override
 //        public void actionPerformed(ActionEvent e) {
-//            input.setText(input.getText() + buttons[i].getText());
+//            inputField.setText(inputField.getText() + buttons[i].getText());
 //        }
 //    };
 
@@ -84,27 +84,27 @@ private void initButtons(){
     bEq = new JButton("=");
 
 
-    b1.addActionListener( (ae) -> input.setText(input.getText() + b1.getText()));
-    b2.addActionListener( (ae) -> input.setText(input.getText() + b2.getText()));
-    b3.addActionListener( (ae) -> input.setText(input.getText() + b3.getText()));
-    b4.addActionListener( (ae) -> input.setText(input.getText() + b4.getText()));
-    b5.addActionListener( (ae) -> input.setText(input.getText() + b5.getText()));
-    b6.addActionListener( (ae) -> input.setText(input.getText() + b6.getText()));
-    b7.addActionListener( (ae) -> input.setText(input.getText() + b7.getText()));
-    b8.addActionListener( (ae) -> input.setText(input.getText() + b8.getText()));
-    b9.addActionListener( (ae) -> input.setText(input.getText() + b9.getText()));
-    b0.addActionListener( (ae) -> input.setText(input.getText() + b0.getText()));
+    b1.addActionListener( (ae) -> inputField.setText(inputField.getText() + b1.getText()));
+    b2.addActionListener( (ae) -> inputField.setText(inputField.getText() + b2.getText()));
+    b3.addActionListener( (ae) -> inputField.setText(inputField.getText() + b3.getText()));
+    b4.addActionListener( (ae) -> inputField.setText(inputField.getText() + b4.getText()));
+    b5.addActionListener( (ae) -> inputField.setText(inputField.getText() + b5.getText()));
+    b6.addActionListener( (ae) -> inputField.setText(inputField.getText() + b6.getText()));
+    b7.addActionListener( (ae) -> inputField.setText(inputField.getText() + b7.getText()));
+    b8.addActionListener( (ae) -> inputField.setText(inputField.getText() + b8.getText()));
+    b9.addActionListener( (ae) -> inputField.setText(inputField.getText() + b9.getText()));
+    b0.addActionListener( (ae) -> inputField.setText(inputField.getText() + b0.getText()));
 
-    bPlus.addActionListener( (ae) ->    input.setText(input.getText() + bPlus.getText()));
-    bMinus.addActionListener( (ae) ->   input.setText(input.getText() + bMinus.getText()));
-    bDiv.addActionListener( (ae) ->     input.setText(input.getText() + bDiv.getText()));
-    bMul.addActionListener( (ae) ->     input.setText(input.getText() + bMul.getText()));
-    bDot.addActionListener( (ae) ->     input.setText(input.getText() + bDot.getText()));
+    bPlus.addActionListener( (ae) ->    inputField.setText(inputField.getText() + bPlus.getText()));
+    bMinus.addActionListener( (ae) ->   inputField.setText(inputField.getText() + bMinus.getText()));
+    bDiv.addActionListener( (ae) ->     inputField.setText(inputField.getText() + bDiv.getText()));
+    bMul.addActionListener( (ae) ->     inputField.setText(inputField.getText() + bMul.getText()));
+    bDot.addActionListener( (ae) ->     inputField.setText(inputField.getText() + bDot.getText()));
 
-//    bEq.addActionListener( (ae) ->     input.setText(FileRotator.toCompute(input.getText())));
+//    bEq.addActionListener( (ae) ->     inputField.setText(FileRotator.toCompute(inputField.getText())));
     bEq.addActionListener((ae) -> {
         try {
-            input.setText(ClientHandler.sendData(input.getText()));
+            inputField.setText(ClientHandler.sendData(inputField.getText()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -186,8 +186,8 @@ private void initButtons(){
         panel.add(panelNorth, BorderLayout.NORTH);
         //panelNorth.add(new JLabel("enter something"), BorderLayout.WEST);
 
-        input = new JTextField();
-        panelNorth.add(input, BorderLayout.CENTER);
+        inputField = new JTextField();
+        panelNorth.add(inputField, BorderLayout.CENTER);
 
         JPanel panelCenter = new JPanel(new GridLayout(4,4));
         panel.add(panelCenter, BorderLayout.CENTER);
@@ -218,7 +218,7 @@ private void initButtons(){
         clear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                input.setText("");
+                inputField.setText("");
             }
         });
         panelSouth.add(clear);

@@ -32,21 +32,20 @@ public class Mapping {
 
             if (mapCounted.get(str)!=null) {                //here we should check if str->value exists
                                                             //probably here can be NPE
-
                 return mapCounted.get(str).toString();
             }
             else {
                 //add iterator for mapOfMaps
                 //foreach key in mapOfMaps try to return map.get(str).toString(); else return throwable;
-                for (Map.Entry<Integer, HashMap<String, Integer>> entry : mapOfMaps.entrySet())
-                {
-                    if (entry.getValue().get(str)!=null) {
-                        return entry.getValue().get(str).toString();        //return map.get(str).toString();
-                    }
-                    else {
-
-                    }
-                }
+//                for (Map.Entry<Integer, HashMap<String, Integer>> entry : mapOfMaps.entrySet())
+//                {
+//                    if (entry.getValue().get(str)!=null) {
+//                        return entry.getValue().get(str).toString();        //return map.get(str).toString();
+//                    }
+//                    else {
+//
+//                    }
+//                }
                 return "nope"; //return NOT throwable
 
             }

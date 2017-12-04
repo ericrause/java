@@ -7,12 +7,14 @@ package vk.ericrause.ClientSide;
         import java.net.Socket;
 
         import static java.net.InetAddress.getByName;
+        import static vk.ericrause.ClientSide.FckngGUI.inputField;
 
 public class ClientHandler implements Runnable{
 
     static private Socket connection;
     static private ObjectOutputStream output;
     static private ObjectInputStream input;
+    static private String gotResult;
 
 
     public static void main(String[] args) {
@@ -31,14 +33,18 @@ public class ClientHandler implements Runnable{
                 connection = new Socket(getByName("localhost"),8956);
                 output = new ObjectOutputStream(connection.getOutputStream());
                 input = new ObjectInputStream(connection.getInputStream());
+//                JOptionPane.showMessageDialog(null,"got message" +input.readObject());
+                gotResult = (String) input.readObject();
+                FckngGUI.inputField.setText(gotResult);
+                gotResult = null;
 
-                JOptionPane.showMessageDialog(null,(String) input.readObject());
 
                 try{
                     Thread.sleep(10);
                 }catch (InterruptedException ex){
 
                 }
+
             }
 
         } catch (IOException | ClassNotFoundException e) {

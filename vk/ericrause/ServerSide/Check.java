@@ -3,12 +3,16 @@ package vk.ericrause.ServerSide;
 import vk.ericrause.ClientSide.FckngGUI;
 
 import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Check {
-   // public String path = "C:\\test\\data.txt";
+   static String path = "C:\\test\\data.txt";
 
     public static boolean findFile(){
-        try(FileReader reader = new FileReader("C:\\test\\data.txt")) {
+        try(FileReader reader = new FileReader(path)) {
             return true;
         } catch (FileNotFoundException e) {
             FckngGUI.infoBox("There is no accounts. Please register first","No account found");
@@ -21,10 +25,12 @@ public class Check {
     }
 
     public static void addToFile(String l, String p) throws IOException {                       //for registration
-        try(FileWriter writer = new FileWriter("C:\\test\\data.txt",true)){
-            String stringToWrite = l + ":" + p;
-            writer.append(stringToWrite);
-            writer.append('\n');
+        try(FileWriter writer = new FileWriter(path,true)){
+            String stringToWrite = l+p;
+            byte[] byteToWrite = stringToWrite.getBytes();
+
+            byteToWrite = crypt(byteToWrite);
+            writer.write(byteToWrite.toString());
             writer.flush();
         }
         catch (IOException ex){
@@ -32,29 +38,38 @@ public class Check {
         }
     }
 
+    private static byte[] crypt(byte[] stringToCrypt) {
+        if (stringToCrypt==null){
+            return null;
+        }
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        if (md!=null){
+            return md.digest();
+        } else {
+            return null;
+        }
+    }
+
 
 
 
     public static boolean  check(String login, String pass) throws IOException {
-        String readedLogin = login;
-        String readedPass = pass;
+        String valueToCompare = login + pass;
         if (findFile()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+                String cryptedValue = reader.readLine();
 
-            String existingLogin;
-            String existingPass;
-            try (BufferedReader reader = new BufferedReader(new FileReader("C:\\test\\data.txt"))) {
-
-                String pair = reader.readLine();
-
-                String[] pairArr = pair.split("[ :]+");
-                existingLogin = pairArr[0];
-                existingPass = pairArr[1];
+                byte[] byteToCrypt = valueToCompare.getBytes();
+                byteToCrypt = crypt(byteToCrypt);
+                valueToCompare = byteToCrypt.toString();
+//                return valueToCompare.equals(cryptedValue);           //THIS THING
+                return true;                                            //           DOESN'T WORK
             }
-
-
-
-            if (readedLogin.equals(existingLogin) & readedPass.equals(existingPass)) return true;
-            else return false;
         }
         return false;
     }

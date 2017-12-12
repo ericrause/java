@@ -45,7 +45,7 @@ public class FileRotator {
 
 
         int lineNumber = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\test\\log.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(source)))) {
 
             while (reader.readLine()!=null){
                 lineNumber+=1;
@@ -61,7 +61,7 @@ public class FileRotator {
             e.printStackTrace();
         }
 
-        try(FileWriter writer = new FileWriter("C:\\test\\log.txt",true)){
+        try(FileWriter writer = new FileWriter(String.valueOf(source),true)){
             String stringToWrite = str + " = " + result + " at " + date();
             writer.append(stringToWrite);
             writer.append('\n');

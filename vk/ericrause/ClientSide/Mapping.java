@@ -37,15 +37,13 @@ public class Mapping {
             else {
                 //add iterator for mapOfMaps
                 //foreach key in mapOfMaps try to return map.get(str).toString(); else return throwable;
-//                for (Map.Entry<Integer, HashMap<String, Integer>> entry : mapOfMaps.entrySet())
-//                {
-//                    if (entry.getValue().get(str)!=null) {
-//                        return entry.getValue().get(str).toString();        //return map.get(str).toString();
-//                    }
-//                    else {
-//
-//                    }
-//                }
+                for (Map.Entry<Integer, HashMap<String, Integer>> entry : mapOfMaps.entrySet())
+                {
+                    if (entry.getValue().get(str)!=null) {
+                        return entry.getValue().get(str).toString();        //return map.get(str).toString();
+                    }
+
+                }
                 return "nope"; //return NOT throwable
 
             }

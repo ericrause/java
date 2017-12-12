@@ -19,7 +19,7 @@ public class FckngGUI extends JFrame {
     private JButton register, enter, clear, bPlus, bMinus, bDiv, bMul, bDot, bEq, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
     static JTextField inputField;
     private JTextField login;
-    private JTextField password;
+    private JPasswordField password;
     private JTextArea textArea;
     private JLabel authGreeting, authPass, authLogin;
 
@@ -122,7 +122,7 @@ private void initButtons(){
         authForm.add(panelCenter, BorderLayout.CENTER);
 
         login = new JTextField();
-        password = new JTextField();
+        password = new JPasswordField();
         authGreeting = new JLabel("Input your fckng data");
         authLogin = new JLabel("Login:");
         authPass = new JLabel("Pass:");
@@ -147,11 +147,14 @@ private void initButtons(){
         //check for access
         enter.addActionListener(e -> {
             try {
-                if (Check.check(login.getText(), password.getText())) {
+                if (Check.check(login.getText(), password.getText())) {             //instead use SendData(auth:login:pass)
                     authForm.setVisible(false);
                     createView();
-
+//                if (ClientHandler.sendData("auth" + login + ":" + password) && ){
+//
                 }
+
+
                 else {
                     FckngGUI.infoBox("mistake in login/password", "error");
                 }

@@ -28,6 +28,11 @@ public class ServerHandler extends JFrame implements Runnable{
                 connection = server.accept();
                 output = new ObjectOutputStream(connection.getOutputStream());
                 input = new ObjectInputStream(connection.getInputStream());
+
+//                if (input.readObject().equals("auth")){
+//                    auth();
+//                }
+
                 result = FileRotator.toProcess((String) input.readObject());
 
                 output.writeObject(result);
@@ -45,5 +50,8 @@ public class ServerHandler extends JFrame implements Runnable{
             e.printStackTrace();
         }
 
+    }
+    private boolean auth(){
+        return true;
     }
 }
